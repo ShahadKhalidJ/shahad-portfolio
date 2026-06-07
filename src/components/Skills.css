@@ -1,0 +1,94 @@
+/* ============ SKILLS ============ */
+.skills {
+  padding: 120px 40px;
+  background: var(--bg);
+  transition: background 0.3s ease;
+}
+
+.skills-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.skills-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.skill-group {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 32px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+  transition: border-color 0.3s ease;
+}
+
+.skill-group:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.skill-category {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--purple);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding-top: 4px;
+  transition: color 0.3s ease;
+}
+
+.skill-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-pill {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  padding: 10px 18px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text);
+  background: var(--card-bg);
+  font-weight: 500;
+  cursor: default;
+  transition: all 0.25s ease;
+}
+
+.skill-pill:hover {
+  border-color: var(--purple);
+  color: var(--purple);
+  background: var(--purple-soft);
+  transform: translateY(-2px);
+}
+/* ============ RESPONSIVE ============ */
+@media (max-width: 768px) {
+  .skills {
+    padding: 70px 24px;
+  }
+
+  .skills-groups {
+    gap: 24px;
+  }
+
+  .skill-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .skill-pill {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills {
+    padding: 60px 16px;
+  }
+}

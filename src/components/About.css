@@ -1,0 +1,101 @@
+/* ============ ABOUT ============ */
+.about {
+  padding: 140px 40px 120px;
+  background: var(--bg);
+  transition: background 0.3s ease;
+}
+
+.about-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.lead {
+  font-family: 'Lora', serif;
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  margin-bottom: 96px;
+  transition: color 0.3s ease;
+}
+
+.about-block {
+  margin-bottom: 64px;
+}
+
+.about-block:last-of-type {
+  margin-bottom: 0;
+}
+
+.block-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--purple);
+  letter-spacing: 0.16em;
+  display: block;
+  margin-bottom: 16px;
+  transition: color 0.3s ease;
+}
+
+.block-title {
+  font-family: 'Lora', serif;
+  font-size: clamp(26px, 3vw, 34px);
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 20px;
+  letter-spacing: -0.015em;
+  transition: color 0.3s ease;
+}
+
+.block-body {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text-sec);
+  transition: color 0.3s ease;
+}
+
+.block-body em {
+  color: var(--purple);
+  font-style: normal;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+/* ============ RESPONSIVE ============ */
+@media (max-width: 768px) {
+  .about {
+    padding: 70px 24px;
+  }
+
+  .about-inner {
+    gap: 28px;
+  }
+
+  .lead {
+    font-size: 16px;
+  }
+
+  .about-block {
+    padding: 20px;
+  }
+
+  .block-title {
+    font-size: 20px;
+  }
+
+  .block-body {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about {
+    padding: 60px 16px;
+  }
+
+  .about-block {
+    padding: 18px;
+  }
+}

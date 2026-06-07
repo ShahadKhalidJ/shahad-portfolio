@@ -1,0 +1,9 @@
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--purple);
+  z-index: 200;
+  transition: width 0.1s ease;
+}

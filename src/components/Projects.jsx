@@ -1,0 +1,58 @@
+import { useLang } from '../context/LanguageContext'
+import { useScrollReveal } from '../hooks/useScrollReveal'
+import './Projects.css'
+
+function Projects({ openProjectModal }) {
+  const { t } = useLang()
+  const { ref, isVisible } = useScrollReveal()
+
+  return (
+    <section className="projects" id="projects">
+      <div ref={ref} className={`projects-inner reveal ${isVisible ? 'visible' : ''}`}>
+        <span className="eyebrow">{t.projects.eyebrow}</span>
+        <h2 className="section-title">
+          {t.projects.title} <span className="accent">{t.projects.titleAccent}</span>
+        </h2>
+        <p className="section-desc">{t.projects.desc}</p>
+
+        <div className="projects-grid">
+
+          <article className="project-card">
+            <div className="project-preview project-preview-image">
+              <img src="/qawqaa-laptop.jpg" alt="Qawqa'a web platform" />
+            </div>
+
+            <div className="project-body">
+              <div className="project-meta">
+                <h3 className="project-title">{t.projects.qawqaaTitle}</h3>
+                <span className="project-sub">{t.projects.qawqaaSub}</span>
+              </div>
+
+              <p className="project-tagline">{t.projects.tagline}</p>
+
+              <div className="tag-row">
+                <span className="tag">React</span>
+                <span className="tag">Node.js</span>
+                <span className="tag">Express</span>
+                <span className="tag">MongoDB</span>
+                <span className="tag">Tailwind CSS</span>
+                <span className="tag">Jest</span>
+              </div>
+
+              <div className="project-footer">
+                <button onClick={openProjectModal} className="view-details">
+                  {t.projects.viewDetails} <i className="ti ti-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <p className="more-soon">{t.projects.moreSoon}</p>
+      </div>
+    </section>
+  )
+}
+
+export default Projects
