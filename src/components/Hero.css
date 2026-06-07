@@ -72,11 +72,14 @@ html.dark .hero {
   justify-content: center;
   width: 100%;
 }
-/* ============ RESPONSIVE ============ */
 @media (max-width: 768px) {
   .hero {
     padding: 110px 24px 60px;
-    min-height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .hero-desc {
@@ -97,6 +100,8 @@ html.dark .hero {
 @media (max-width: 480px) {
   .hero {
     padding: 100px 16px 50px;
+    min-height: 100vh;
+    min-height: 100dvh;
   }
 
   .hero-desc {
