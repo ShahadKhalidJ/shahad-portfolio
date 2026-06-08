@@ -2,84 +2,115 @@
 .hero {
   min-height: 100vh;
   padding: 140px 40px 80px;
-  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-grad-end) 100%);
-  transition: background 0.3s ease;
+  background: var(--bg);
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-html.dark .hero {
-  background: radial-gradient(circle at center top, var(--bg-grad-end) 0%, var(--bg) 60%);
+  transition: background 0.3s ease;
 }
 
 .hero-inner {
   max-width: 900px;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 100%;
 }
 
+/* العناوين الرئيسية */
 .hero-title {
   font-family: 'Lora', serif;
-  font-size: clamp(32px, 5.5vw, 64px);
+  font-size: clamp(32px, 5vw, 58px);
   font-weight: 500;
   color: var(--text);
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  min-height: 1.2em;
   transition: color 0.3s ease;
-  text-align: center;
-  width: 100%;
 }
 
 .hero-title-purple {
   color: var(--purple);
-  margin-top: 8px;
   transition: color 0.3s ease;
 }
 
-@keyframes blink {
-  0%, 49% { opacity: 1; }
-  50%, 100% { opacity: 0; }
-}
-
-.cursor {
-  display: inline-block;
-  animation: blink 1s infinite;
-  font-weight: 400;
-}
-
+/* النبذة */
 .hero-desc {
-  font-size: 18px;
+  font-size: 17px;
   color: var(--text-sec);
-  margin: 32px auto 0;
+  margin-top: 28px;
+  max-width: 540px;
   line-height: 1.55;
-  max-width: 560px;
   transition: color 0.3s ease;
-  text-align: center;
 }
 
+/* السوشال */
 .socials {
   display: flex;
   gap: 22px;
-  margin-top: 44px;
+  margin-top: 40px;
+  justify-content: center;
+}
+
+.social-link {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text);
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  font-size: 22px;
+  text-decoration: none;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+.social-link:hover {
+  background: var(--purple);
+  color: #FFFFFF;
+  border-color: var(--purple);
+  transform: translateY(-5px) scale(1.1);
+}
+
+.social-link:active {
+  transform: scale(0.9);
+}
+
+/* ============ HERO FADE-IN ============ */
+.hero-fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-desc.hero-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+.socials.hero-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.45s;
+}
+
+/* ============ RESPONSIVE ============ */
 @media (max-width: 768px) {
   .hero {
     padding: 110px 24px 60px;
     min-height: 100vh;
     min-height: 100dvh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  }
+
+  .hero-title {
+    font-size: clamp(28px, 7vw, 42px);
   }
 
   .hero-desc {
@@ -92,7 +123,9 @@ html.dark .hero {
     margin-top: 32px;
   }
 
-  .socials .social-link {
+  .social-link {
+    width: 40px;
+    height: 40px;
     font-size: 20px;
   }
 }
@@ -100,11 +133,25 @@ html.dark .hero {
 @media (max-width: 480px) {
   .hero {
     padding: 100px 16px 50px;
-    min-height: 100vh;
-    min-height: 100dvh;
+  }
+
+  .hero-title {
+    font-size: clamp(26px, 8vw, 36px);
   }
 
   .hero-desc {
     font-size: 15px;
+    margin-top: 20px;
+  }
+
+  .socials {
+    gap: 16px;
+    margin-top: 28px;
+  }
+
+  .social-link {
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
   }
 }
