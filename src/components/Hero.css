@@ -55,7 +55,7 @@
   justify-content: center;
 }
 
-.social-link {
+.socials .social-link {
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -69,18 +69,16 @@
   text-decoration: none;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
-.social-link:hover {
-  background: var(--purple);
+.socials .social-link:hover {
+  background: #5B4FBF;
   color: #FFFFFF;
-  border-color: var(--purple);
-  transform: translateY(-5px) scale(1.1);
+  border-color: #5B4FBF;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(91, 79, 191, 0.45);
 }
-
-.social-link:active {
+.socials .social-link:active {
   transform: scale(0.9);
 }
-
 /* ============ HERO FADE-IN ============ */
 .hero-fade {
   opacity: 0;

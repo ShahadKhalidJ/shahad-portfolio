@@ -151,9 +151,11 @@ html.dark .contact {
 }
 
 .contact-socials .social-link:hover {
-  border-color: var(--purple);
-  color: var(--purple);
-  transform: translateY(-2px);
+  background: #5B4FBF;
+  color: #FFFFFF;
+  border-color: #5B4FBF;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(91, 79, 191, 0.45);
 }
 
 .contact-form {
