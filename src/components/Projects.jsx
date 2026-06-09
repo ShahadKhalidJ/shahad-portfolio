@@ -6,6 +6,8 @@ function Projects({ openProjectModal }) {
   const { t } = useLang()
   const { ref, isVisible } = useScrollReveal()
 
+  const items = t.projects.items
+
   return (
     <section className="projects" id="projects">
       <div ref={ref} className={`projects-inner reveal ${isVisible ? 'visible' : ''}`}>
@@ -16,37 +18,34 @@ function Projects({ openProjectModal }) {
         <p className="section-desc">{t.projects.desc}</p>
 
         <div className="projects-grid">
-
-          <article className="project-card">
-            <div className="project-preview project-preview-image">
-              <img src="/qawqaa-laptop.jpg" alt="Qawqa'a web platform" />
-            </div>
-
-            <div className="project-body">
-              <div className="project-meta">
-                <h3 className="project-title">{t.projects.qawqaaTitle}</h3>
-                <span className="project-sub">{t.projects.qawqaaSub}</span>
+          {Object.entries(items).map(([key, project]) => (
+            <article key={key} className="project-card">
+              <div className="project-preview project-preview-image">
+                <img src={project.image} alt={project.alt} />
               </div>
 
-              <p className="project-tagline">{t.projects.tagline}</p>
+              <div className="project-body">
+                <div className="project-meta">
+                  <h3 className="project-title">{project.title}</h3>
+                  <span className="project-sub">{project.sub}</span>
+                </div>
 
-              <div className="tag-row">
-                <span className="tag">React</span>
-                <span className="tag">Node.js</span>
-                <span className="tag">Express</span>
-                <span className="tag">MongoDB</span>
-                <span className="tag">Tailwind CSS</span>
-                <span className="tag">Jest</span>
+                <p className="project-tagline">{project.tagline}</p>
+
+                <div className="tag-row">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="tag">{tag}</span>
+                  ))}
+                </div>
+
+                <div className="project-footer">
+                  <button onClick={() => openProjectModal(key)} className="view-details">
+                    {t.projects.viewDetails} <i className="ti ti-arrow-right"></i>
+                  </button>
+                </div>
               </div>
-
-              <div className="project-footer">
-                <button onClick={openProjectModal} className="view-details">
-                  {t.projects.viewDetails} <i className="ti ti-arrow-right"></i>
-                </button>
-              </div>
-            </div>
-          </article>
-
+            </article>
+          ))}
         </div>
 
         <p className="more-soon">{t.projects.moreSoon}</p>

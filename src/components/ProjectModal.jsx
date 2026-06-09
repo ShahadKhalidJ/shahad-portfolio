@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useLang } from '../context/LanguageContext'
 import './ProjectModal.css'
 
-function ProjectModal({ isOpen, onClose }) {
+function ProjectModal({ isOpen, onClose, projectKey }) {
   const { t } = useLang()
 
   useEffect(() => {
@@ -16,7 +16,10 @@ function ProjectModal({ isOpen, onClose }) {
     }
   }, [isOpen, onClose])
 
-  if (!isOpen) return null
+  if (!isOpen || !projectKey) return null
+
+  const project = t.projects.items[projectKey]
+  if (!project) return null
 
   return (
     <div className="pm-overlay" onClick={onClose}>
@@ -26,7 +29,7 @@ function ProjectModal({ isOpen, onClose }) {
           <div className="pm-title-group">
             <span className="pm-eyebrow">{t.pm.eyebrow}</span>
             <h3 className="pm-title">
-              {t.pm.qawqaaTitle} <span className="pm-arabic">— {t.pm.qawqaaSub}</span>
+              {project.title} <span className="pm-arabic">— {project.sub}</span>
             </h3>
           </div>
 
@@ -39,41 +42,52 @@ function ProjectModal({ isOpen, onClose }) {
 
           <div className="pm-section">
             <h4 className="pm-section-title">{t.pm.about}</h4>
-            <p className="pm-text">{t.pm.aboutBody}</p>
+            <p className="pm-text">{project.aboutBody}</p>
           </div>
 
           <div className="pm-section">
             <h4 className="pm-section-title">{t.pm.role}</h4>
             <div className="pm-role-box">
-              <span className="pm-role-tag">{t.pm.roleTag}</span>
-              <p className="pm-text">{t.pm.roleBody}</p>
+              <span className="pm-role-tag">{project.roleTag}</span>
+              <p className="pm-text">{project.roleBody}</p>
             </div>
           </div>
 
           <div className="pm-section">
             <h4 className="pm-section-title">{t.pm.techs}</h4>
             <div className="tag-row">
-              <span className="tag">React</span>
-              <span className="tag">Node.js</span>
-              <span className="tag">Express</span>
-              <span className="tag">MongoDB</span>
-              <span className="tag">Tailwind CSS</span>
-              <span className="tag">Jest</span>
-              <span className="tag">Postman</span>
-              <span className="tag">REST APIs</span>
+              {project.modalTags.map((tag) => (
+                <span key={tag} className="tag">{tag}</span>
+              ))}
             </div>
           </div>
 
-          <div className="pm-section">
-            <h4 className="pm-section-title">{t.pm.poster}</h4>
-            <div className="pm-poster-frame">
-              <iframe src="/qawqaa-poster.pdf" title="Qawqa'a conference poster" />
+          {project.poster && (
+            <div className="pm-section">
+              <h4 className="pm-section-title">{t.pm.poster}</h4>
+              <div className="pm-poster-frame">
+                <iframe src={project.poster} title={`${project.title} conference poster`} />
+              </div>
+              <a href={project.poster} download className="pm-download-btn">
+                <i className="ti ti-download"></i>
+                <span>{t.pm.download}</span>
+              </a>
             </div>
-            <a href="/qawqaa-poster.pdf" download className="pm-download-btn">
-              <i className="ti ti-download"></i>
-              <span>{t.pm.download}</span>
-            </a>
-          </div>
+          )}
+
+          {project.features && (
+            <div className="pm-section">
+              <h4 className="pm-section-title">{t.pm.features}</h4>
+              <ul className="pm-features-list">
+                {project.features.map((feature, idx) => (
+                  <li key={idx} className="pm-feature-item">
+                    <i className="ti ti-check"></i>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
         </div>
       </div>

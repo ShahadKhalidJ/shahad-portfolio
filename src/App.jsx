@@ -18,7 +18,7 @@ import './App.css'
 function App() {
   const [isDark, setIsDark] = useState(false)
   const [isCVOpen, setIsCVOpen] = useState(false)
-  const [isProjectOpen, setIsProjectOpen] = useState(false)
+  const [activeProject, setActiveProject] = useState(null)
 
   useEffect(() => {
     if (isDark) {
@@ -50,8 +50,8 @@ function App() {
   const toggleTheme = () => setIsDark(!isDark)
   const openCV = () => setIsCVOpen(true)
   const closeCV = () => setIsCVOpen(false)
-  const openProjectModal = () => setIsProjectOpen(true)
-  const closeProjectModal = () => setIsProjectOpen(false)
+  const openProjectModal = (projectKey) => setActiveProject(projectKey)
+  const closeProjectModal = () => setActiveProject(null)
 
   return (
     <div>
@@ -67,7 +67,11 @@ function App() {
       <Footer />
       <BackToTop />
       <CVModal isOpen={isCVOpen} onClose={closeCV} />
-      <ProjectModal isOpen={isProjectOpen} onClose={closeProjectModal} />
+      <ProjectModal
+        isOpen={activeProject !== null}
+        onClose={closeProjectModal}
+        projectKey={activeProject}
+      />
     </div>
   )
 }
