@@ -2,14 +2,128 @@
 .hero {
   min-height: 100vh;
   padding: 140px 40px 80px;
-  background: var(--bg);
+  background:
+    radial-gradient(ellipse at 15% 25%, rgba(91, 79, 191, 0.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 75%, rgba(155, 143, 232, 0.08) 0%, transparent 50%),
+    var(--bg);
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   transition: background 0.3s ease;
 }
 
+/* Dark mode: stronger purple glow */
+html.dark .hero {
+  background:
+    radial-gradient(ellipse at 15% 25%, rgba(91, 79, 191, 0.22) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 75%, rgba(155, 143, 232, 0.14) 0%, transparent 50%),
+    var(--bg);
+}
+
+/* ============ HERO BACKGROUND SYMBOLS ============ */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero-symbol {
+  position: absolute;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  color: var(--purple);
+  opacity: 0.16;
+  user-select: none;
+  animation: floatSymbol 6s ease-in-out infinite;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+}
+
+html.dark .hero-symbol {
+  opacity: 0.22;
+}
+
+/* Left side symbols */
+.hero-sym-1 {
+  top: 14%;
+  left: 6%;
+  font-size: 44px;
+  animation-duration: 7s;
+  animation-delay: 0s;
+}
+
+.hero-sym-3 {
+  top: 38%;
+  left: 4%;
+  font-size: 38px;
+  animation-duration: 6.5s;
+  animation-delay: 1.2s;
+}
+
+.hero-sym-6 {
+  top: 68%;
+  left: 5%;
+  font-size: 32px;
+  animation-duration: 7.5s;
+  animation-delay: 2.4s;
+}
+
+.hero-sym-7 {
+  top: 24%;
+  left: 12%;
+  font-size: 30px;
+  animation-duration: 5.5s;
+  animation-delay: 0.8s;
+}
+
+/* Right side symbols */
+.hero-sym-2 {
+  top: 18%;
+  right: 7%;
+  font-size: 36px;
+  animation-duration: 6s;
+  animation-delay: 0.4s;
+}
+
+.hero-sym-5 {
+  top: 42%;
+  right: 5%;
+  font-size: 28px;
+  animation-duration: 7s;
+  animation-delay: 1.6s;
+}
+
+.hero-sym-8 {
+  top: 60%;
+  right: 12%;
+  font-size: 30px;
+  animation-duration: 6.5s;
+  animation-delay: 2s;
+}
+
+.hero-sym-4 {
+  top: 80%;
+  right: 8%;
+  font-size: 32px;
+  animation-duration: 7s;
+  animation-delay: 0.6s;
+}
+
+/* Gentle floating animation */
+@keyframes floatSymbol {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(0, -18px) rotate(2deg);
+  }
+}
+
+/* ============ HERO INNER (above symbols) ============ */
 .hero-inner {
   max-width: 900px;
   width: 100%;
@@ -18,6 +132,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 /* العناوين الرئيسية */
@@ -69,6 +185,7 @@
   text-decoration: none;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 .socials .social-link:hover {
   background: #5B4FBF;
   color: #FFFFFF;
@@ -76,9 +193,11 @@
   transform: translateY(-4px);
   box-shadow: 0 10px 24px rgba(91, 79, 191, 0.45);
 }
+
 .socials .social-link:active {
   transform: scale(0.9);
 }
+
 /* ============ HERO FADE-IN ============ */
 .hero-fade {
   opacity: 0;
@@ -121,11 +240,21 @@
     margin-top: 32px;
   }
 
-  .social-link {
+  .socials .social-link {
     width: 40px;
     height: 40px;
     font-size: 20px;
   }
+
+  /* Reduce symbol sizes on mobile */
+  .hero-sym-1 { font-size: 32px; top: 12%; left: 4%; }
+  .hero-sym-2 { font-size: 28px; top: 16%; right: 4%; }
+  .hero-sym-3 { font-size: 28px; top: 36%; left: 3%; }
+  .hero-sym-4 { font-size: 24px; top: 82%; right: 5%; }
+  .hero-sym-5 { font-size: 22px; top: 44%; right: 4%; }
+  .hero-sym-6 { font-size: 24px; top: 70%; left: 4%; }
+  .hero-sym-7 { font-size: 22px; top: 26%; left: 18%; }
+  .hero-sym-8 { font-size: 22px; top: 62%; right: 16%; }
 }
 
 @media (max-width: 480px) {
@@ -147,9 +276,22 @@
     margin-top: 28px;
   }
 
-  .social-link {
+  .socials .social-link {
     width: 38px;
     height: 38px;
     font-size: 18px;
   }
+
+  /* Hide some symbols on smallest screens to avoid clutter */
+  .hero-sym-7,
+  .hero-sym-8 {
+    display: none;
+  }
+
+  .hero-sym-1 { font-size: 26px; }
+  .hero-sym-2 { font-size: 22px; }
+  .hero-sym-3 { font-size: 24px; }
+  .hero-sym-4 { font-size: 20px; }
+  .hero-sym-5 { font-size: 20px; }
+  .hero-sym-6 { font-size: 22px; }
 }

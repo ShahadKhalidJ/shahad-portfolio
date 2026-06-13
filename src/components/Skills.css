@@ -36,22 +36,25 @@
   color: var(--purple);
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  padding-top: 4px;
+  padding-top: 10px;
   transition: color 0.3s ease;
 }
 
 .skill-items {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
 }
 
-.skill-pill {
+.skill-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
-  padding: 10px 18px;
+  padding: 10px 16px;
   border: 1px solid var(--border);
-  border-radius: 999px;
+  border-radius: 12px;
   color: var(--text);
   background: var(--card-bg);
   font-weight: 500;
@@ -59,12 +62,33 @@
   transition: all 0.25s ease;
 }
 
-.skill-pill:hover {
+.skill-item:hover {
   border-color: var(--purple);
-  color: var(--purple);
-  background: var(--purple-soft);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(91, 79, 191, 0.15);
 }
+
+/* ============ ICON STYLES ============ */
+
+/* All icons inside skill items */
+.skill-item i {
+  font-size: 22px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* Monochrome icons (Express, GitHub) - adapt to theme */
+.skill-item i.skill-icon-mono {
+  color: var(--text);
+  transition: color 0.3s ease;
+}
+
+/* Tabler icons (REST APIs, Soft Skills) - brand purple */
+.skill-item i.skill-icon-tabler {
+  color: var(--purple);
+  transition: color 0.3s ease;
+}
+
 /* ============ RESPONSIVE ============ */
 @media (max-width: 768px) {
   .skills {
@@ -72,23 +96,45 @@
   }
 
   .skills-groups {
-    gap: 24px;
+    gap: 32px;
   }
 
   .skill-group {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding-bottom: 32px;
   }
 
-  .skill-pill {
+  .skill-category {
+    padding-top: 0;
+  }
+
+  .skill-items {
+    gap: 10px;
+  }
+
+  .skill-item {
     font-size: 13px;
-    padding: 6px 12px;
+    padding: 8px 14px;
+    gap: 8px;
+  }
+
+  .skill-item i {
+    font-size: 20px;
   }
 }
 
 @media (max-width: 480px) {
   .skills {
     padding: 60px 16px;
+  }
+
+  .skill-item {
+    font-size: 12.5px;
+    padding: 8px 12px;
+  }
+
+  .skill-item i {
+    font-size: 18px;
   }
 }

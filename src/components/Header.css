@@ -13,12 +13,13 @@
 
 .logo {
   font-family: 'Lora', serif;
-  font-size: 24px;
+  font-size: 42px;
   font-weight: 600;
   color: var(--text);
   letter-spacing: -0.02em;
   transition: color 0.3s ease;
   flex-shrink: 0;
+  line-height: 1;
 }
 
 .logo-dot {
@@ -249,7 +250,7 @@
   }
 
   .logo {
-    font-size: 22px;
+    font-size: 36px;
   }
 }
 

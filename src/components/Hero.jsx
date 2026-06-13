@@ -46,6 +46,17 @@ function Hero() {
 
   return (
     <section className="hero" id="home">
+      <div className="hero-bg" aria-hidden="true">
+        <span className="hero-symbol hero-sym-1">{'{ }'}</span>
+        <span className="hero-symbol hero-sym-2">{'</>'}</span>
+        <span className="hero-symbol hero-sym-3">{'=>'}</span>
+        <span className="hero-symbol hero-sym-4">{'[ ]'}</span>
+        <span className="hero-symbol hero-sym-5">{'&&'}</span>
+        <span className="hero-symbol hero-sym-6">{'();'}</span>
+        <span className="hero-symbol hero-sym-7">{'?.'}</span>
+        <span className="hero-symbol hero-sym-8">{'${ }'}</span>
+      </div>
+
       <div className="hero-inner">
         <h1 className="hero-title">
           {nameText}
